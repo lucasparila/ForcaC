@@ -112,6 +112,10 @@ O projeto foi desenvolvido em um período de 5 semanas, com cada semana focada e
 - **Metodologia**: O desenvolvimento foi realizado de forma colaborativa, com ambos os desenvolvedores trabalhando juntos em todas as partes do projeto. Em vez de dividir o trabalho, preferimos sempre trabalhar juntos na mesma tarefa, garantindo uma sinergia e troca de ideias constantes.
 - **Benefícios**: Essa abordagem colaborativa permitiu a identificação rápida de problemas, brainstorming conjunto e um desenvolvimento mais coeso e integrado.
 
+## 🎥 Assita o vídeo no YouTube
+<> 📕Clique aqui para assistir</a>
+OBS: Vídeo em desenvolvimento. Em breve estará disponível. 
+
 
 ## 👨‍💻 Feito Por
 
