@@ -63,6 +63,30 @@ Para compilar e executar o jogo, é necessário ter:
 - **Modo Jogador vs Máquina**: O jogo sorteia palavras de uma pilha estruturada com palavras de diferentes níveis de dificuldade. A cada palavra descoberta o jogador soma 1 ponto. Caso o jogador seja enforcado, o jogo termina. A soma total dos pontos no jogo define a sua posição no ranking. Se o jogador começar outro jogo, a pontuação inicia do zero. 
 - Nas duas modalidades, o jogador tem um número limitado de tentativas para adivinhar a palavra antes de perder. Cada erro adiciona uma parte do corpo do enforcado. O jogador perde quando o corpo do enforcado está completo, que acontece quando se atinge seis tentativas erradas.
 
+###Desenvolvimento do Projeto
+
+O projeto foi desenvolvido em um período de 5 semanas, com cada semana focada em uma parte específica do desenvolvimento. Abaixo está o resumo das atividades semanais e das estratégias adotadas:
+
+### Semana 1 e 2: Lógica Base do Jogo (TAD Jogo da Forca)
+- **Objetivo**: Definir e implementar a lógica base do jogo da forca.
+- **Atividades**: Discussão e definição das funções para manipular os dados do jogo (palavras e dicas), de acordo com as regras.
+- **Resultados**: Implementação das funções para criar, destruir e manipular o jogo da forca, encapsuladas em um Tipo Abstrato de Dados (TAD).
+
+### Semana 3 e 4: Banco de Dados e Pilha de Palavras
+- **Objetivo**: Criar um banco de dados em formato TXT contendo palavras e dicas, e implementar uma pilha para gerenciar essas palavras no jogo.
+- **Atividades**: Implementação das funções para carregar as palavras do banco de dados e empilhá-las em uma estrutura de pilha.
+- **Resultados**: A pilha foi utilizada para, no fluxo do jogo, desempilhar a palavra e a dica de cada rodada.
+
+### Semana 5: Ranking e Fluidez da Interface
+- **Objetivo**: Desenvolver o sistema de ranking e melhorar a fluidez da interface do jogo.
+- **Atividades**: Implementação das funções para gerenciar o ranking usando uma Lista Simplesmente Encadeada e adição de funções para melhorar a fluidez da interface.
+- **Resultados**: A estrutura de dados Lista Simplesmente Encadeada foi utilizada para armazenar os elementos do ranking. Funções adicionais foram implementadas para limpar a tela e manter as informações mais importantes visíveis durante as rodadas.
+
+### Colaboração
+- **Metodologia**: O desenvolvimento foi realizado de forma colaborativa, com ambos os desenvolvedores trabalhando juntos em todas as partes do projeto. Em vez de dividir o trabalho, preferimos sempre trabalhar juntos na mesma tarefa, garantindo uma sinergia e troca de ideias constantes.
+- **Benefícios**: Essa abordagem colaborativa permitiu a identificação rápida de problemas, brainstorming conjunto e um desenvolvimento mais coeso e integrado.
+
+
 ## 👨‍💻 Feito Por
 
 <p>
