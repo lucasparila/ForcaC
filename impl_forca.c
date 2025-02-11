@@ -1,5 +1,5 @@
 #include "forca.h"
-#define TAMANHO_PALAVRA 20
+#define TAMANHO_PALAVRA 30
 // lógica jogo
 struct jogo {
     char *palavra;
@@ -96,14 +96,14 @@ void desenhar_forca(T_jogo str) {
         }
     }
     palavra_secreta[str->tamanho] = '\0';
-    printf("                                                                   _______       \n");
-    printf("                                                                  |/      |      \n");
-    printf("                                                                  |      %c%c%c   \n", (str->erros >= 1 ? '(' : ' '), (str->erros >= 1 ? '_' : ' '), (str->erros >= 1 ? ')' : ' '));
-    printf("                                                                  |      %c%c%c   \n", (str->erros >= 3 ? '\\' : ' '), (str->erros >= 2 ? '|' : ' '), (str->erros >= 4 ? '/' : ' '));
-    printf("                                                                  |       %c     \n", (str->erros >= 2 ? '|' : ' '));
-    printf("                                                                  |      %c  %c   \n", (str->erros >= 5 ? '/' : ' '), (str->erros >= 6 ? '\\' : ' '));
-    printf("                                                                  |              \n");
-    printf("                                                                  | %s           \n", palavra_secreta);
+    printf("                             _______       \n");
+    printf("                            |/      |      \n");
+    printf("                            |      %c%c%c   \n", (str->erros >= 1 ? '(' : ' '), (str->erros >= 1 ? '_' : ' '), (str->erros >= 1 ? ')' : ' '));
+    printf("                            |      %c%c%c   \n", (str->erros >= 3 ? '\\' : ' '), (str->erros >= 2 ? '|' : ' '), (str->erros >= 4 ? '/' : ' '));
+    printf("                            |       %c     \n", (str->erros >= 2 ? '|' : ' '));
+    printf("                            |      %c  %c   \n", (str->erros >= 5 ? '/' : ' '), (str->erros >= 6 ? '\\' : ' '));
+    printf("                            |              \n");
+    printf("                            | %s           \n", palavra_secreta);
     printf("\n\n");
 }
 

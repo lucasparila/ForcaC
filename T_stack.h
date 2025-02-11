@@ -17,3 +17,4 @@ bool isFull(T_Stack stack);
 bool isEmpty(T_Stack stack);
 bool push(T_Stack stack, T_Info element);
 bool pop(T_Stack stack, T_Info* element);
+

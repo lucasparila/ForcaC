@@ -1,5 +1,6 @@
 #include "forca.h"
 #include "T_stack.h"
+#include "LinkedList.h"
 #include <conio.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -12,9 +13,9 @@
 void mensagem_inicio_jogadorvsmaquina() {
     printf("                                   *** MODO JOGADOR VS MAQUINA ***\n\n");
     printf("                                           Prepare-se!\n\n");
-    printf("                         Quanto mais palavras voce a certa, maior eh a sua pontuacao\n."); 
-    printf("                                 Se nao acertar a palavra eh Fim de Jogo!\n\n\n");
-    printf("                                       Pressione ENTER para continuar...");
+    printf("                      Quanto mais palavras voce acertar, maior eh a sua pontuacao\n."); 
+    printf("                               Se nao acertar a palavra eh Fim de Jogo!\n\n\n");
+    printf("                                    Pressione ENTER para continuar...");
     getchar();
 }
 
@@ -22,9 +23,10 @@ void mensagem_apos_acertar_palavra() {
     printf("Pressione ENTER para advinhar a proxima palavra...");
     getchar();
 }
+
 void  mensagem_apos_errar_palavra(){
-    printf("Fim de jogo\n");
-    printf("Pressione ENTER para voltar para o menu...");
+    printf("Enforcado!\n");
+    printf("Pressione ENTER para continuar...");
     getchar();
 }
 
@@ -98,47 +100,56 @@ void carregar_palavras(T_Stack stack, const char *filename) {
     fclose(file);
 }
 
-// Função para o modo Jogador vs Jogador
+// Função para o modo Jogador vs Jogador. Define três rodadas por jogo para cada jogador. 
 void modo_jogador_vs_jogador() {
     char palavra[MAX];
     char dica[MAX];
     T_jogo jogo = NULL;
 
-    for (int rodadas = 0; rodadas < 3; rodadas++) {
+    for (int rodadas = 0; rodadas < 6; rodadas++) {
         if (jogo != NULL) {
             destroi(jogo);
         }
-
-        printf("\nRodada %d\n", rodadas + 1);
-        printf("Digite a palavra secreta da rodada %d:\n", rodadas + 1);
-        capturarPalavra(palavra, MAX);
-
-        printf("Digite a dica para a palavra secreta:\n");
-        scanf("%s", dica);
-
-        jogo = create(palavra, dica);
-
-        do {
-            printf("                              DICA: %s\n", getDica(jogo));
-            desenhar_forca(jogo);
-            recebe_palpite(jogo);
+        if(getchar()){
             limpa_tela();
-        } while (!jogo_ganho(jogo) && !jogo_perdido(jogo));
-        limpa_tela();
-        desenhar_forca(jogo);
-        imprime_resultado_final(jogo);
-        printf("Pressione ENTER para continuar...");
-        getchar();
-    }
+            printf("\nRodada %d\n", rodadas + 1);
+            printf("Digite a palavra secreta da rodada %d:\n", rodadas + 1);
+            capturarPalavra(palavra, MAX);
 
+            printf("Digite a dica para a palavra secreta:\n");
+            scanf("%s", dica);
+            jogo = create(palavra, dica);
+            printf("Pressione ENTER para continuar...");
+        }
+        
+        if(getchar()){
+            limpa_tela();
+            do {
+                printf("                              DICA: %s\n", getDica(jogo));
+                desenhar_forca(jogo);
+                recebe_palpite(jogo);
+                limpa_tela();
+            } while (!jogo_ganho(jogo) && !jogo_perdido(jogo));
+            limpa_tela();
+            desenhar_forca(jogo);
+            imprime_resultado_final(jogo);
+            if(jogo_ganho(jogo)){
+                mensagem_apos_acertar_palavra();         
+            }else{
+                mensagem_apos_errar_palavra();
+            }
+        }
+    }
     if (jogo != NULL) {
         destroi(jogo);
     }
 }
 
-void modo_jogador_vs_maquina(T_Stack fila_jogo) {
+void modo_jogador_vs_maquina(T_Stack fila_jogo, List ranking) {
     char palavra[MAX];
     char dica[MAX];
+    int score = 0;
+    char nome[7];
     T_jogo jogo = NULL;
     limpa_tela();
     mensagem_inicio_jogadorvsmaquina();
@@ -158,6 +169,7 @@ void modo_jogador_vs_maquina(T_Stack fila_jogo) {
             imprime_resultado_final(jogo);
             if(jogo_ganho(jogo)){
                 mensagem_apos_acertar_palavra();
+                score += 1;
             }else{
                 mensagem_apos_errar_palavra();
             }
@@ -166,6 +178,21 @@ void modo_jogador_vs_maquina(T_Stack fila_jogo) {
             }
             
         } while (!jogo_perdido(jogo));
+        limpa_tela();
+        printf("Digite seu nome para entrar no Ranking:\n (máx 5 caracteres...)\n");
+        scanf("%s", nome);
+        insertList(ranking, nome, score);
+        getchar();
+        printf("Pressione ENTER para continuar...");
+        if(getchar()){
+            limpa_tela();
+            printf("Para ver o Ranking, selecione a opção  no menu inicial.\n");
+        }
+        if(getchar()){
+            printf("Retornando ao Menu Princiapl.\n");
+            limpa_tela();
+        }
+        
     
         if (jogo != NULL) {
             destroi(jogo);
@@ -182,6 +209,7 @@ int main() {
     T_Stack fila_jogo = init(TAMANHO_MAX_BANCO);
     carregar_palavras(fila_jogo, filename);
     int opcoes;
+    List ranking = createList();
     if(getchar()){
         do {
             printf("\n1- JOGADOR VS JOGADOR\n2- JOGADOR VS MAQUINA\n3- RANKING\n0- SAIR DO JOGO\n");
@@ -191,12 +219,16 @@ int main() {
                 modo_jogador_vs_jogador();
                 break;
             case 2:
-                modo_jogador_vs_maquina(fila_jogo);
+                modo_jogador_vs_maquina(fila_jogo, ranking);
                 break;
             case 3:
-                printf("Ranking ainda não implementado.\n");
-                printf("Pressione ENTER para continuar...");
                 getchar();
+                limpa_tela();
+                printRanking(ranking);
+                printf("Pressione ENTER para voltar ao menu principal...");
+                if(getchar()){
+                    limpa_tela();
+                }
                 break;
             case 0:
                 printf("Saindo...\n");
