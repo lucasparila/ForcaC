@@ -34,6 +34,7 @@ Para compilar e executar o jogo, é necessário ter:
 
 - **Compilador GCC** instalado.
 - Sistema operacional compatível com C (Linux, Windows ou macOS).
+  OBS: O código foi desenvolvido para rodar tanto no Windows como no Lixux, porém utilizamos a biblioteca canio.h para melhorar a interação com o jogo. Trata-se de uma biblioteca específica para o Windows não compatível de forma direta com o Lixus. Recomendamos utilizar o Windows para rodar o jogo. 
 
 ## Instalação
 
