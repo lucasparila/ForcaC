@@ -63,8 +63,33 @@ Para compilar e executar o jogo, é necessário ter:
 - **Modo Jogador vs Jogador**: Um jogador define a palavra secreta e a dica, enquanto o outro tenta adivinhar. Essa modalidade é livre para os jogadores definirem a dinâmica das rodadas e também os critérios para definir um ganhador.
 - **Modo Jogador vs Máquina**: O jogo sorteia palavras de uma pilha estruturada com palavras de diferentes níveis de dificuldade. A cada palavra descoberta o jogador soma 1 ponto. Caso o jogador seja enforcado, o jogo termina. A soma total dos pontos no jogo define a sua posição no ranking. Se o jogador começar outro jogo, a pontuação inicia do zero. 
 - Nas duas modalidades, o jogador tem um número limitado de tentativas para adivinhar a palavra antes de perder. Cada erro adiciona uma parte do corpo do enforcado. O jogador perde quando o corpo do enforcado está completo, que acontece quando se atinge seis tentativas erradas.
+- 
+## Telas do jogo
 
-###Desenvolvimento do Projeto
+O jogo é apresentado via terminal de forma simples. A seguir apresentamos algumas telas do jogo:
+
+### 1. Tela de Abertura
+![Tela de abertura](abertura.png)
+
+Apresenta o nome do jogo e o desenho de uma forca completa feita totalmente com caracteres.
+
+### 2. Menu
+![Menu](Menu.png)
+
+Menu simples apresentando todas as opções dentro do jogo.
+
+### 3. Abertura Jogador vs Máquina
+![Tela de abertura j vs m](Aberturajogadorvsmaquina.png)
+
+### 4. Tela Principal para o Jogo
+![Jogo Forca](teladaforcaedaadivinhação.png)
+
+Tela que apresenta a forca e o fluxo de adivinhação. Essa é a tela principal do jogo, para as duas modalidades.
+
+Por fim, em um primeiro momento, o jogo está desenvolvido para rodar com os recursos do terminal apenas, por isso tem uma apresentação simples e intuitiva.
+
+
+## Desenvolvimento do Projeto
 
 O projeto foi desenvolvido em um período de 5 semanas, com cada semana focada em uma parte específica do desenvolvimento. Abaixo está o resumo das atividades semanais e das estratégias adotadas:
 
